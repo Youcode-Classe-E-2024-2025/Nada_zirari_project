@@ -1,6 +1,6 @@
-CREATE DATABASE zirari_manager;
+CREATE DATABASE zirari_todo;
 
-USE zirari_manager;
+USE zirari_todo;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
