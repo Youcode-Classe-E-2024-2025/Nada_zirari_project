@@ -31,3 +31,6 @@ CREATE TABLE tasks (
     FOREIGN KEY (assigned_to) REFERENCES users(id),
     FOREIGN KEY (project_id) REFERENCES projects(id)
 );
+
+ALTER TABLE projects
+ADD COLUMN typeproject VARCHAR(255) NOT NULL ;
