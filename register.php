@@ -1,5 +1,5 @@
 <?php
-require_once '../src/Models/User.php';
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
