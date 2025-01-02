@@ -43,3 +43,6 @@ ALTER TABLE users
 MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite') NOT NULL DEFAULT 'invite';
 ALTER TABLE projects
 ADD COLUMN is_public BOOLEAN DEFAULT 1;
+
+INSERT INTO users (name, email, password, role) 
+VALUES ('admin', 'zirari@admin.com', '123456', 'chef_de_projet');
