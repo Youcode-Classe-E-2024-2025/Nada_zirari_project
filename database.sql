@@ -22,6 +22,7 @@ CREATE TABLE projects (
 );
 
 
+
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
@@ -36,3 +37,9 @@ CREATE TABLE tasks (
 
 ALTER TABLE projects
 ADD COLUMN typeproject VARCHAR(255) NOT NULL ;
+ALTER TABLE users
+MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite', 'super_admin') NOT NULL DEFAULT 'invite';
+ALTER TABLE users
+MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite') NOT NULL DEFAULT 'invite';
+ALTER TABLE projects
+ADD COLUMN is_public BOOLEAN DEFAULT 1;
