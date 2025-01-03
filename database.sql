@@ -21,7 +21,12 @@ CREATE TABLE projects (
     FOREIGN KEY (created_by) REFERENCES users(id)
 );
 
-
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    task_name TEXT NOT NULL,
+    FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
+);
 
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,12 +42,17 @@ CREATE TABLE tasks (
 
 ALTER TABLE projects
 ADD COLUMN typeproject VARCHAR(255) NOT NULL ;
-ALTER TABLE users
-MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite', 'super_admin') NOT NULL DEFAULT 'invite';
-ALTER TABLE users
-MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite') NOT NULL DEFAULT 'invite';
 ALTER TABLE projects
 ADD COLUMN is_public BOOLEAN DEFAULT 1;
 
 INSERT INTO users (name, email, password, role) 
 VALUES ('admin', 'zirari@admin.com', '123456', 'chef_de_projet');
+ALTER TABLE users
+MODIFY COLUMN role ENUM('chef_de_projet', 'membre', 'invite') NOT NULL DEFAULT 'membre';
+
+
+INSERT INTO users (name, email, password, role) 
+VALUES ('Chef de Projet', 'chef@gmail.com', SHA2('123456', 256), 'chef_de_projet');
+INSERT INTO projects (name, description, is_public) VALUES
+('Projet Alpha', 'Description du projet Alpha', 1),
+('Projet Beta', 'Description du projet Beta', 0);
